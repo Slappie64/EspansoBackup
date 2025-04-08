@@ -1,0 +1,252 @@
+# espanso match file
+
+# For a complete introduction, visit the official docs at: https://espanso.org/docs/
+
+# You can use this file to define the base matches (aka snippets)
+# that will be available in every application when using espanso.
+
+# Matches are substitution rules: when you type the "trigger" string
+# it gets replaced by the "replace" string.
+matches:
+  # Simple text replacement
+  - trigger: ":espanso"
+    replace: "Hi there!"
+
+  # NOTE: espanso uses YAML to define matches, so pay attention to the indentation!
+
+  # But matches can also be dynamic:
+
+# Title: Date Insertion
+# Description: Type ;date to quickly insert the current date.
+  - trigger: ";date"
+    replace: "{{mydate}}"
+    vars:
+      - name: "mydate"
+        type: "date"
+        params:
+          format: "%Y-%m-%d"
+
+# Title: Time Insertion
+# Description: Type ;time to quickly insert the current time.
+  - trigger: ";time"
+    replace: "{{mytime}}"
+    vars:
+      - name: "mytime"
+        type: "date"
+        params:
+          format: "%H:%M:%S"
+
+
+  # Print the output of a shell command
+  - trigger: ":shell"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "echo 'Hello from your shell'"
+
+  # And much more! For more information, visit the docs: https://espanso.org/docs/
+  #
+
+  # Kayako Initial Note
+  # Trigger: inote
+  # Description: Generates the initial ticket note
+  - trigger: ":inote"
+    replace: |
+      User Details
+       - Name: 
+       - Username: 
+       - Email Address: 
+       - Location: 
+       - Phone Number: 
+      -----------------------------------
+      Device Details
+       - Hostname: 
+       - IP Address: 
+       - MAC Address: 
+       - OS: 
+       - Description: 
+      -----------------------------------
+      Ticket Details
+       - Priority: 
+       - Type: 
+       - Category: 
+      -----------------------------------
+      References
+       - 
+
+      Notes
+       - 
+
+      Resolution
+       - [ To Be Confirmed ]
+  
+  # Trigger: note
+  # Description: Generate an update note on a ticket
+  - trigger: ":note"
+    replace: |
+      Update: 
+      -----------------------------------
+      Notes 
+       - 
+
+      Next Steps / Resolution
+       - 
+
+  # Trigger: triage
+  # Description: Generate a Triage Template
+  - trigger: ":triage"
+    replace: |
+      Phone / Walk Up / Other
+      -----------------------------------
+      Incident / Service Request Description
+       - 
+
+      First Reported
+       - 
+       
+      Users Affected
+       - 
+
+  # Trigger: fup
+  # Description: Generate a note informing of a follow up
+  - trigger: ":follow"
+    replace: |
+      Follow Up
+      -----------------------------------
+      Date: 
+      Time: 
+      Reason: 
+      Actions: 
+      -----------------------------------
+
+  # Trigger: ":response"
+  # Description: Generate a generic response that the ticket has been picked up
+  - trigger: ":response"
+    replace: |
+      Thank you for reaching out to the IT support team. I wanted to confirm that we've received your request and I will get this assigned to the relevant team to further assist.
+
+      We will keep you updated on our progress, and we'll let you know as soon as we have more information. If you have any additional details or if anything changes, please feel free to reply to this message.
+      Your patience is greatly appreciated.
+
+      Best regards,
+      Luigi
+
+  # Trigger: ":kr"
+  # Description: Generate a Kind Regards message
+  - trigger: ":kr"
+    replace: |
+      Kind regards,
+      Luigi
+  
+  # Trigger: ":all-net"
+  # Description: Generate a message to allocate ticket to networing team
+  - trigger: ":all-net"
+    replace: |
+      Hi Team,
+
+      I hope you are well.
+      I will raise this with the networking team now.
+      If there is anything else that you need to add to this ticket, please feel free to reply to this email.
+
+      Kind regards,
+      Luigi
+
+
+# Title: Ticket Note Template
+# Trigger: ;ticketnote
+# Description: Type ;ticketnote to generate a detailed ticket note template.
+  - trigger: ";ticketnote"
+    replace: |
+      Ticket ID:
+      Date: {{mydate}}
+      ---------------------------------------
+      User Details:
+      - Name: 
+      - Email Address: 
+      - Phone Number: 
+      - Location: 
+      - Username: 
+      ---------------------------------------
+      Device Information:
+      - Device Type: 
+      - Hostname: 
+      - Operating System: 
+      - Asset Tag/Serial Number: 
+      - IP Address: 
+      - MAC Address: 
+      - Description: 
+      ---------------------------------------
+      Issue Summary:
+      - Reported Problem: 
+      - Error Messages (if any): 
+      - Frequency: 
+      - Recent Changes: 
+      ---------------------------------------
+      Troubleshooting Steps Taken:
+      1. [Step 1]
+      2. [Step 2]
+      3. [Step 3]
+      - Outcome: [Resolved / Escalated / Pending Further Action]
+      ---------------------------------------
+      Next Steps:
+      - Assigned to: 
+      - Follow-up required: [Yes/No]
+      - ETA for resolution: [Insert timeframe]
+      ---------------------------------------
+      Notes & Additional Information:
+      - Related Tickets:
+      - Additional Comments:
+       - >> 
+      ---------------------------------------
+    vars:
+      - name: "mydate"
+        type: "date"
+        params:
+          format: "%Y-%m-%d"
+
+
+  # Trigger: ;quote
+  # Description: Type ;quote to generate a random quote.
+  - trigger: ";quote"
+    replace: |
+      -----------------------------------------------------
+      "$|$"
+      -----------------------------------------------------
+      Source: [Person, Document, or Ticket ID]
+      Date: {{mydate}}
+      Additional Notes: [Context or explanation related to the quote]
+      -----------------------------------------------------
+    vars:
+      - name: "mydate"
+        type: "date"
+        params:
+          format: "%Y-%m-%d"
+
+
+  - trigger: ";followup"
+    replace: |
+      Follow-Up Scheduled: 
+      --------------------------------
+      Actions To Be Taken:
+      1. [Step 1: Checked system status]
+      2. [Step 2: Communicated with user]
+      3. [Step 3: Applied fixes or escalations]
+      - Outcome: [Resolved / Further investigation required]
+      --------------------------------
+      Follow-Up Completed:
+      --------------------------------
+      Next Steps:
+      - Assigned to: [Self / Escalated]
+      - Expected resolution date: [YYYY-MM-DD]
+      - Further follow-up required: [Yes/No]
+      --------------------------------
+      Additional Notes:
+      [Any new observations, feedback from the user, or related logs]
+      -----------------------------------
+    vars:
+      - name: "mydate"
+        type: "date"
+        params:
+          format: "%Y-%m-%d"
