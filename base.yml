@@ -11,13 +11,8 @@ matches:
   # Simple text replacement
   - trigger: ":espanso"
     replace: "Hi there!"
-
-  # NOTE: espanso uses YAML to define matches, so pay attention to the indentation!
-
-  # But matches can also be dynamic:
-
-# Title: Date Insertion
-# Description: Type ;date to quickly insert the current date.
+    
+# Date: Generates a date string in the format YYYY-MM-DD
   - trigger: ";date"
     replace: "{{mydate}}"
     vars:
@@ -26,8 +21,7 @@ matches:
         params:
           format: "%Y-%m-%d"
 
-# Title: Time Insertion
-# Description: Type ;time to quickly insert the current time.
+# Time: Generates a time string in the format HH:MM:SS
   - trigger: ";time"
     replace: "{{mytime}}"
     vars:
@@ -36,8 +30,7 @@ matches:
         params:
           format: "%H:%M:%S"
 
-
-  # Print the output of a shell command
+# Shell: Executes a shell command and replaces the trigger with the output
   - trigger: ":shell"
     replace: "{{output}}"
     vars:
@@ -46,12 +39,7 @@ matches:
         params:
           cmd: "echo 'Hello from your shell'"
 
-  # And much more! For more information, visit the docs: https://espanso.org/docs/
-  #
-
-  # Kayako Initial Note
-  # Trigger: inote
-  # Description: Generates the initial ticket note
+# Depreciated - INote: Generates a detailed ticket note with user and device information
   - trigger: ":inote"
     replace: |
       User Details
@@ -82,8 +70,7 @@ matches:
       Resolution
        - [ To Be Confirmed ]
   
-  # Trigger: note
-  # Description: Generate an update note on a ticket
+# Depreciated - Note: Generates an update ticket note with user and device information
   - trigger: ":note"
     replace: |
       Update: 
@@ -94,8 +81,7 @@ matches:
       Next Steps / Resolution
        - 
 
-  # Trigger: triage
-  # Description: Generate a Triage Template
+# Triage: Generates a triage note with incident/service request details
   - trigger: ":triage"
     replace: |
       Phone / Walk Up / Other
@@ -109,8 +95,7 @@ matches:
       Users Affected
        - 
 
-  # Trigger: fup
-  # Description: Generate a note informing of a follow up
+# Depreciated - Follow Up: Generates a follow-up note with date, time, and reason
   - trigger: ":follow"
     replace: |
       Follow Up
@@ -121,8 +106,7 @@ matches:
       Actions: 
       -----------------------------------
 
-  # Trigger: ":response"
-  # Description: Generate a generic response that the ticket has been picked up
+# Response: Generates a basic respons etemplate for IT support
   - trigger: ":response"
     replace: |
       Thank you for reaching out to the IT support team. I wanted to confirm that we've received your request and I will get this assigned to the relevant team to further assist.
@@ -133,15 +117,13 @@ matches:
       Best regards,
       Luigi
 
-  # Trigger: ":kr"
-  # Description: Generate a Kind Regards message
+# KR: Generates a "Kind Regards" response template
   - trigger: ":kr"
     replace: |
       Kind regards,
       Luigi
   
-  # Trigger: ":all-net"
-  # Description: Generate a message to allocate ticket to networing team
+# All Net: Generates a response template for all network-related issues
   - trigger: ":all-net"
     replace: |
       Hi Team,
@@ -153,10 +135,7 @@ matches:
       Kind regards,
       Luigi
 
-
-# Title: Ticket Note Template
-# Trigger: ;ticketnote
-# Description: Type ;ticketnote to generate a detailed ticket note template.
+# Ticket Note: Generates a detailed ticket note with user and device information
   - trigger: ";ticketnote"
     replace: |
       🎫 Ticket ID:
@@ -207,9 +186,7 @@ matches:
         params:
           format: "%Y-%m-%d"
 
-
-  # Trigger: ;quote
-  # Description: Type ;quote to generate a random quote.
+# Quote: Generates a quote template with date and source information
   - trigger: ";quote"
     replace: |
       -----------------------------------------------------
@@ -225,10 +202,7 @@ matches:
         params:
           format: "%Y-%m-%d"
 
-# Title: Follow-Up Template
-# Trigger: ;followup
-# Description: Type ;followup to generate a follow-up template.
-  # This template is designed to be used after a ticket has been updated or resolved.
+# Follow-Up: Generates a follow-up note with actions and results
   - trigger: ";followup"
     replace: |
       🛟 Follow-Up Scheduled: 
@@ -256,10 +230,7 @@ matches:
         params:
           format: "%Y-%m-%d"
   
-  # Title: Closing Ticket Template
-  # Trigger: ;closingticket
-  # Description: Type ;closingticket to generate a closing ticket message.
-    # This template is designed to be used when closing a ticket after multiple follow-ups.
+# Closing Ticket: Generates a closing ticket note with user and device information
   - trigger: ";closingticket"
     replace: |
       Good morning / afternoon $|$,
@@ -273,11 +244,10 @@ matches:
       Best regards,  
       Luigi
 
-
-  # Title: Emoji Shortcuts
-  # Description: Shortcuts to quickly add status emojis.
+# Check: Generates a checkmark symbol
   - trigger: ";check"
     replace: ✅
 
+# Cross: Generates a cross mark symbol
   - trigger: ";cross"
     replace: ❌
