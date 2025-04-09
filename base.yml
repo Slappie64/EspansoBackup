@@ -159,17 +159,17 @@ matches:
 # Description: Type ;ticketnote to generate a detailed ticket note template.
   - trigger: ";ticketnote"
     replace: |
-      Ticket ID:
-      Date: {{mydate}}
+      🎫 Ticket ID:
+      🗓️ Date: {{mydate}}
       ---------------------------------------
-      User Details:
+      👤 User Details:
       - Name: 
       - Email Address: 
       - Phone Number: 
       - Location: 
       - Username: 
       ---------------------------------------
-      Device Information:
+      🖥️ Device Information:
       - Device Type: 
       - Hostname: 
       - Operating System: 
@@ -178,24 +178,25 @@ matches:
       - MAC Address: 
       - Description: 
       ---------------------------------------
-      Issue Summary:
+      ⚠️ Issue Summary:
       - Reported Problem: 
       - Error Messages (if any): 
       - Frequency: 
       - Recent Changes: 
       ---------------------------------------
-      Troubleshooting Steps Taken:
+      🔧 Troubleshooting Steps Taken:
       1. [Step 1]
       2. [Step 2]
       3. [Step 3]
       - Outcome: [Resolved / Escalated / Pending Further Action]
       ---------------------------------------
-      Next Steps:
+      🛟 Next Steps:
       - Assigned to: 
       - Follow-up required: [Yes/No]
       - ETA for resolution: [Insert timeframe]
+      - Actions: [Insert actions to be taken]
       ---------------------------------------
-      Notes & Additional Information:
+      ℹ️ Notes & Additional Information:
       - Related Tickets:
       - Additional Comments:
        - >> 
@@ -212,7 +213,7 @@ matches:
   - trigger: ";quote"
     replace: |
       -----------------------------------------------------
-      "$|$"
+      💬 "$|$"
       -----------------------------------------------------
       Source: [Person, Document, or Ticket ID]
       Date: {{mydate}}
@@ -224,29 +225,59 @@ matches:
         params:
           format: "%Y-%m-%d"
 
-
+# Title: Follow-Up Template
+# Trigger: ;followup
+# Description: Type ;followup to generate a follow-up template.
+  # This template is designed to be used after a ticket has been updated or resolved.
   - trigger: ";followup"
     replace: |
-      Follow-Up Scheduled: 
+      🛟 Follow-Up Scheduled: 
       --------------------------------
-      Actions To Be Taken:
+      🔧 Actions To Be Taken:
       1. [Step 1: Checked system status]
       2. [Step 2: Communicated with user]
       3. [Step 3: Applied fixes or escalations]
+      --------------------------------
+      ✅ Follow-Up Completed:
       - Outcome: [Resolved / Further investigation required]
       --------------------------------
-      Follow-Up Completed:
-      --------------------------------
-      Next Steps:
+      📃 Results:
       - Assigned to: [Self / Escalated]
-      - Expected resolution date: [YYYY-MM-DD]
+      - Follow Up Date: [YYYY-MM-DD]
       - Further follow-up required: [Yes/No]
+      - Next Steps: [N/A / Further investigation / Escalation]
       --------------------------------
-      Additional Notes:
-      [Any new observations, feedback from the user, or related logs]
+      ℹ️ Additional Notes:
+      - [Any new observations, feedback from the user, or related logs]
       -----------------------------------
     vars:
       - name: "mydate"
         type: "date"
         params:
           format: "%Y-%m-%d"
+  
+  # Title: Closing Ticket Template
+  # Trigger: ;closingticket
+  # Description: Type ;closingticket to generate a closing ticket message.
+    # This template is designed to be used when closing a ticket after multiple follow-ups.
+  - trigger: ";closingticket"
+    replace: |
+      Good morning / afternoon $|$,
+
+      I hope this message finds you well.
+      I wanted to follow up on the ticket you raised with us regarding [insert issue description]. We’ve made three attempts to reach out regarding your reported issue [Ticket ID], but unfortunately, we haven’t received a response.
+      As per our support protocol, we’ll be closing this ticket now to ensure our resources are allocated efficiently. Should you still require assistance, please respond to this email which will automatically open the ticket.
+
+      Thank you for your understanding, and we’re here if you need further help in the future.
+
+      Best regards,  
+      Luigi
+
+
+  # Title: Emoji Shortcuts
+  # Description: Shortcuts to quickly add status emojis.
+  - trigger: ";check"
+    replace: ✅
+
+  - trigger: ";cross"
+    replace: ❌
