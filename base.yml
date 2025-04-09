@@ -84,6 +84,20 @@ matches:
       Kind regards,
       Luigi
 
+# Closing Ticket: Generates a closing ticket note with user and device information
+  - trigger: ";closingticket"
+    replace: |
+      Good morning / afternoon $|$,
+
+      I hope this message finds you well.
+      I wanted to follow up on the ticket you raised with us regarding [insert issue description]. We’ve made three attempts to reach out regarding your reported issue [Ticket ID], but unfortunately, we haven’t received a response.
+      As per our support protocol, we’ll be closing this ticket now to ensure our resources are allocated efficiently. Should you still require assistance, please respond to this email which will automatically open the ticket.
+
+      Thank you for your understanding, and we’re here if you need further help in the future.
+
+      Best regards,  
+      Luigi
+
 # ------------------------------------------------------------------------------------
 # Ticket Notes
 # ------------------------------------------------------------------------------------
@@ -183,20 +197,6 @@ matches:
         params:
           format: "%Y-%m-%d"
   
-# Closing Ticket: Generates a closing ticket note with user and device information
-  - trigger: ";closingticket"
-    replace: |
-      Good morning / afternoon $|$,
-
-      I hope this message finds you well.
-      I wanted to follow up on the ticket you raised with us regarding [insert issue description]. We’ve made three attempts to reach out regarding your reported issue [Ticket ID], but unfortunately, we haven’t received a response.
-      As per our support protocol, we’ll be closing this ticket now to ensure our resources are allocated efficiently. Should you still require assistance, please respond to this email which will automatically open the ticket.
-
-      Thank you for your understanding, and we’re here if you need further help in the future.
-
-      Best regards,  
-      Luigi
-
 # ------------------------------------------------------------------------------------
 # Emoji Replacements
 # ------------------------------------------------------------------------------------
