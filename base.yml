@@ -1,17 +1,15 @@
 # espanso match file
+# Official docs: https://espanso.org/docs/
 
-# For a complete introduction, visit the official docs at: https://espanso.org/docs/
-
-# You can use this file to define the base matches (aka snippets)
-# that will be available in every application when using espanso.
-
-# Matches are substitution rules: when you type the "trigger" string
-# it gets replaced by the "replace" string.
 matches:
   # Simple text replacement
   - trigger: ":espanso"
     replace: "Hi there!"
-    
+
+# ------------------------------------------------------------------------------------
+# Functional Snippets
+# ------------------------------------------------------------------------------------
+
 # Date: Generates a date string in the format YYYY-MM-DD
   - trigger: ";date"
     replace: "{{mydate}}"
@@ -39,47 +37,9 @@ matches:
         params:
           cmd: "echo 'Hello from your shell'"
 
-# Depreciated - INote: Generates a detailed ticket note with user and device information
-  - trigger: ":inote"
-    replace: |
-      User Details
-       - Name: 
-       - Username: 
-       - Email Address: 
-       - Location: 
-       - Phone Number: 
-      -----------------------------------
-      Device Details
-       - Hostname: 
-       - IP Address: 
-       - MAC Address: 
-       - OS: 
-       - Description: 
-      -----------------------------------
-      Ticket Details
-       - Priority: 
-       - Type: 
-       - Category: 
-      -----------------------------------
-      References
-       - 
-
-      Notes
-       - 
-
-      Resolution
-       - [ To Be Confirmed ]
-  
-# Depreciated - Note: Generates an update ticket note with user and device information
-  - trigger: ":note"
-    replace: |
-      Update: 
-      -----------------------------------
-      Notes 
-       - 
-
-      Next Steps / Resolution
-       - 
+# ------------------------------------------------------------------------------------
+# Ticket Responses
+# ------------------------------------------------------------------------------------
 
 # Triage: Generates a triage note with incident/service request details
   - trigger: ":triage"
@@ -94,17 +54,6 @@ matches:
        
       Users Affected
        - 
-
-# Depreciated - Follow Up: Generates a follow-up note with date, time, and reason
-  - trigger: ":follow"
-    replace: |
-      Follow Up
-      -----------------------------------
-      Date: 
-      Time: 
-      Reason: 
-      Actions: 
-      -----------------------------------
 
 # Response: Generates a basic respons etemplate for IT support
   - trigger: ":response"
@@ -134,6 +83,10 @@ matches:
 
       Kind regards,
       Luigi
+
+# ------------------------------------------------------------------------------------
+# Ticket Notes
+# ------------------------------------------------------------------------------------
 
 # Ticket Note: Generates a detailed ticket note with user and device information
   - trigger: ";ticketnote"
@@ -244,6 +197,10 @@ matches:
       Best regards,  
       Luigi
 
+# ------------------------------------------------------------------------------------
+# Emoji Replacements
+# ------------------------------------------------------------------------------------
+
 # Check: Generates a checkmark symbol
   - trigger: ";check"
     replace: ✅
@@ -251,3 +208,64 @@ matches:
 # Cross: Generates a cross mark symbol
   - trigger: ";cross"
     replace: ❌
+
+# Star: Generates a star symbol
+  - trigger: ";star"
+    replace: ⭐
+
+# ------------------------------------------------------------------------------------
+# Depreciated
+# ------------------------------------------------------------------------------------
+
+# Depreciated - INote: Generates a detailed ticket note with user and device information
+  - trigger: ":inote"
+    replace: |
+      User Details
+       - Name: 
+       - Username: 
+       - Email Address: 
+       - Location: 
+       - Phone Number: 
+      -----------------------------------
+      Device Details
+       - Hostname: 
+       - IP Address: 
+       - MAC Address: 
+       - OS: 
+       - Description: 
+      -----------------------------------
+      Ticket Details
+       - Priority: 
+       - Type: 
+       - Category: 
+      -----------------------------------
+      References
+       - 
+
+      Notes
+       - 
+
+      Resolution
+       - [ To Be Confirmed ]
+  
+# Depreciated - Note: Generates an update ticket note with user and device information
+  - trigger: ":note"
+    replace: |
+      Update: 
+      -----------------------------------
+      Notes 
+       - 
+
+      Next Steps / Resolution
+       - 
+
+# Depreciated - Follow Up: Generates a follow-up note with date, time, and reason
+  - trigger: ":follow"
+    replace: |
+      Follow Up
+      -----------------------------------
+      Date: 
+      Time: 
+      Reason: 
+      Actions: 
+      -----------------------------------
