@@ -42,18 +42,18 @@ matches:
 # ------------------------------------------------------------------------------------
 
 # Triage: Generates a triage note with incident/service request details
-  - trigger: ":triage"
+  - trigger: ";triage"
     replace: |
-      Phone / Walk Up / Other
+      [Phone / Walk Up / Other]
+      -----------------------------------
+      First Reported Date: {{mydate}}
+      First Reported Time: {{mytime}}
       -----------------------------------
       Incident / Service Request Description
        - 
-
-      First Reported
-       - 
-       
-      Users Affected
-       - 
+      Users / Devices Affected
+       -
+      
 
 # Response: Generates a basic respons etemplate for IT support
   - trigger: ":response"
@@ -105,17 +105,17 @@ matches:
 # Ticket Note: Generates a detailed ticket note with user and device information
   - trigger: ";ticketnote"
     replace: |
-      🎫 Ticket ID:
-      🗓️ Date: {{mydate}}
+      Ticket ID:
+      Date: {{mydate}}
       ---------------------------------------
-      👤 User Details:
+      User Details:
       - Name: 
       - Email Address: 
       - Phone Number: 
       - Location: 
       - Username: 
       ---------------------------------------
-      🖥️ Device Information:
+      Device Information:
       - Device Type: 
       - Hostname: 
       - Operating System: 
@@ -124,25 +124,25 @@ matches:
       - MAC Address: 
       - Description: 
       ---------------------------------------
-      ⚠️ Issue Summary:
+      Issue Summary:
       - Reported Problem: 
       - Error Messages (if any): 
       - Frequency: 
       - Recent Changes: 
       ---------------------------------------
-      🔧 Troubleshooting Steps Taken:
+      Troubleshooting Steps Taken:
       1. [Step 1]
       2. [Step 2]
       3. [Step 3]
       - Outcome: [Resolved / Escalated / Pending Further Action]
       ---------------------------------------
-      🛟 Next Steps:
+      Next Steps:
       - Assigned to: 
       - Follow-up required: [Yes/No]
       - ETA for resolution: [Insert timeframe]
       - Actions: [Insert actions to be taken]
       ---------------------------------------
-      ℹ️ Notes & Additional Information:
+      Notes & Additional Information:
       - Related Tickets:
       - Additional Comments:
        - >> 
@@ -157,7 +157,7 @@ matches:
   - trigger: ";quote"
     replace: |
       -----------------------------------------------------
-      💬 "$|$"
+      "$|$"
       -----------------------------------------------------
       Source: [Person, Document, or Ticket ID]
       Date: {{mydate}}
@@ -172,23 +172,23 @@ matches:
 # Follow-Up: Generates a follow-up note with actions and results
   - trigger: ";followup"
     replace: |
-      🛟 Follow-Up Scheduled: 
+      Follow-Up Scheduled: 
       --------------------------------
-      🔧 Actions To Be Taken:
+      Actions To Be Taken:
       1. [Step 1: Checked system status]
       2. [Step 2: Communicated with user]
       3. [Step 3: Applied fixes or escalations]
       --------------------------------
-      ✅ Follow-Up Completed:
+      Follow-Up Completed:
       - Outcome: [Resolved / Further investigation required]
       --------------------------------
-      📃 Results:
+      Results:
       - Assigned to: [Self / Escalated]
       - Follow Up Date: [YYYY-MM-DD]
       - Further follow-up required: [Yes/No]
       - Next Steps: [N/A / Further investigation / Escalation]
       --------------------------------
-      ℹ️ Additional Notes:
+      Additional Notes:
       - [Any new observations, feedback from the user, or related logs]
       -----------------------------------
     vars:
